@@ -16,7 +16,7 @@ function addLayer() {
   // Make a div inside that says "404"
   layer.appendChild(document.createTextNode("404"));
   // Random X position
-  layer.style.left = randint(-10, 100) + "vw";
+  layer.style.left = randint(-10, window.innerWidth) + "px";
   // Below bottom of screen
   layer.style.top = window.innerHeight + "px";
   // Font size and weight based on Z value

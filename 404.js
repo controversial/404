@@ -42,7 +42,7 @@ function update() {
     y = parseInt(div.style.top.slice(0, div.style.top.length - 2));
     div.style.top = (y - Math.ceil(z * 10)).toFixed(2) + "px";
 
-    if (y < (-50)) {
+    if (y < (-150)) { // Max fontsize is 150px
       scene.removeChild(layer);
     }
   }

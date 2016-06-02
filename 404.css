@@ -9,7 +9,7 @@ body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
-ul {
+#scene {
   position: fixed;
   top: 0;
   left: 0;
@@ -20,11 +20,7 @@ ul {
   overflow: hidden;
 }
 
-ul > li.layer {
-  list-style-type: none;
-}
-
-.layer div {
+.layer {
   position: absolute;
 }
 

@@ -8,39 +8,36 @@ function randint(low, high) { // Return a random integer between low and high
 
 function addLayer() {
   // Make  a "layer" in the parallax animation
-  var layer = document.createElement("li");
-  layer.setAttribute("class", "layer");
+  var layer = document.createElement("div");
   // Give it a random Z value (0 to 1)
+  layer.setAttribute("class", "layer");
   layer.setAttribute("data-z", Math.random().toFixed(2));
 
   // Make a div inside that says "404"
-  var content = document.createElement("div");
-  content.appendChild(document.createTextNode("404"));
+  layer.appendChild(document.createTextNode("404"));
   // Random X position
-  content.style.left = randint(-10, 100) + "vw";
+  layer.style.left = randint(-10, 100) + "vw";
   // Below bottom of screen
-  content.style.top = window.innerHeight + "px";
+  layer.style.top = window.innerHeight + "px";
   // Font size and weight based on Z value
   var z = parseFloat(layer.getAttribute("data-z"));
-  content.style.fontSize = Math.floor(z * 150) + "px";
-  content.style.fontWeight = Math.ceil(z * 4) * 100;
+  layer.style.fontSize = Math.floor(z * 150) + "px";
+  layer.style.fontWeight = Math.ceil(z * 4) * 100;
   // Random opacity
-  content.style.opacity = (Math.random() / 10).toFixed(2);
+  layer.style.opacity = (Math.random() / 10).toFixed(2);
 
   // Add nodes to appropriate parents
-  layer.appendChild(content);
   scene.appendChild(layer);
 }
 
 function update() {
-  var layers = scene.getElementsByTagName("li");
+  var layers = scene.getElementsByTagName("div");
   var layer, div, z;
   for (var i = 0; i < layers.length; i++) {
     layer = layers[i];
     z = parseFloat(layer.getAttribute("data-z"));
-    div = layer.getElementsByTagName("div")[0];
-    y = parseInt(div.style.top.slice(0, div.style.top.length - 2));
-    div.style.top = (y - Math.ceil(z * 10)).toFixed(2) + "px";
+    y = parseInt(layer.style.top.slice(0, layer.style.top.length - 2));
+    layer.style.top = (y - Math.ceil(z * 10)).toFixed(2) + "px";
 
     if (y < (-150)) { // Max fontsize is 150px
       scene.removeChild(layer);

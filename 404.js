@@ -60,9 +60,6 @@ window.onload = function() {
   scene = document.getElementById("scene");
   setInterval(function() {
     addLayer();
-    // for (var i = 0; i < randint(1, 3); i++) {
-    //   addLayer();
-    // }
     update();
     updateColor();
   }, 40);

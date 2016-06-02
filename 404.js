@@ -30,7 +30,7 @@ function addLayer() {
   scene.appendChild(layer);
 }
 
-function update() {
+function updatePositions() {
   var layers = scene.getElementsByTagName("div");
   var layer, div, z;
   for (var i = 0; i < layers.length; i++) {
@@ -53,11 +53,14 @@ function updateColor() {
   document.getElementsByTagName("a")[0].style.backgroundColor = hex;
 }
 
+function update() {
+  addLayer();
+  updatePositions();
+  updateColor();
+  window.requestAnimationFrame(update); // Recur
+}
+
 window.onload = function() {
   scene = document.getElementById("scene");
-  setInterval(function() {
-    addLayer();
-    update();
-    updateColor();
-  }, 40);
+  window.requestAnimationFrame(update);
 };

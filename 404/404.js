@@ -19,10 +19,10 @@ function addLayer() {
   // Random X position
   content.style.left = randint(-10, 100) + "vw";
   // Below bottom of screen
-  content.style.top = "100vh";
+  content.style.top = window.innerHeight + "px";
   // Font size and weight based on Z value
   var z = parseFloat(layer.getAttribute("data-z"));
-  content.style.fontSize = z * 150 + "px";
+  content.style.fontSize = Math.floor(z * 150) + "px";
   content.style.fontWeight = Math.ceil(z * 4) * 100;
   // Random opacity
   content.style.opacity = (Math.random() / 10).toFixed(2);
@@ -40,7 +40,7 @@ function update() {
     z = parseFloat(layer.getAttribute("data-z"));
     div = layer.getElementsByTagName("div")[0];
     y = parseInt(div.style.top.slice(0, div.style.top.length - 2));
-    div.style.top = (y - Math.ceil(z * 3)).toFixed(2) + "vh";
+    div.style.top = (y - Math.ceil(z * 10)).toFixed(2) + "px";
 
     if (y < (-50)) {
       scene.removeChild(layer);
@@ -59,9 +59,10 @@ function updateColor() {
 window.onload = function() {
   scene = document.getElementById("scene");
   setInterval(function() {
-    for (var i = 0; i < randint(1, 5); i++) {
-      addLayer();
-    }
+    addLayer();
+    // for (var i = 0; i < randint(1, 3); i++) {
+    //   addLayer();
+    // }
     update();
     updateColor();
   }, 40);

@@ -49,7 +49,7 @@ function update() {
 }
 
 function updateColor() {
-  var hue = (parseFloat(document.body.getAttribute("data-hue")) + 0.5) % 360;
+  var hue = (parseFloat(document.body.getAttribute("data-hue")) + 0.25) % 360;
   document.body.setAttribute("data-hue", hue.toString());
   var hex = chroma(hue, 1, 1, "hsv").brighten().hex();
   document.body.style.color = hex;

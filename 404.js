@@ -59,7 +59,7 @@ function update() {
 
 window.onload = function() {
   scene = document.getElementById("scene");
-  // Add 100 nodes with 50 second delay between each
+  // Add 100 nodes with 50 millisecond delay between each
   for (var i=0; i < 100; i++) {
     setTimeout(addLayer, 50 * i);
   }

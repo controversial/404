@@ -22,7 +22,7 @@ function setAttributes(layer) {
   var z = Math.random();                                     // Give it a random Z value, and
   layer.setAttribute("data-z", z.toFixed(2));                // store the Z value.
   layer.style.left = randint(-10, window.innerWidth) + "px"; // Give it a random X position,
-  layer.style.top = window.innerHeight + "px";               // and have it start below the bottom of the screen/
+  layer.style.top = "-150px";                                // and have it start below the bottom of the screen/
   layer.style.fontSize = Math.ceil(z * 100) + 50 + "px";     // Font size is based on Z value (ranges from 50 to 150),
   layer.style.fontWeight = Math.ceil(z * 4) * 100;           // as is font weight.
   layer.style.opacity = (Math.random() / 10).toFixed(2);     // It has a random opacity.
@@ -35,9 +35,9 @@ function updatePositions() {
     layer = layers[i];
     z = parseFloat(layer.getAttribute("data-z"));
     y = parseInt(layer.style.top.slice(0, layer.style.top.length - 2));
-    layer.style.top = (y - Math.ceil(z * 10)).toFixed(2) + "px";
+    layer.style.top = (y + Math.ceil(z * 10)).toFixed(2) + "px";
 
-    if (y < (-150)) { // Max fontsize is 150px
+    if (y > window.innerHeight) { // Max fontsize is 150px
       setAttributes(layer); // Go back down to the bottom, get randomized again
     }
   }
